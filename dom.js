@@ -126,15 +126,99 @@
 //     name.value=""
 // })
 
-function print(num){
-    setTimeout(() => {
-        console.log("inside print")
-         num() 
-    }, 2000);
+// function print(num){
+//     setTimeout(() => {
+//         console.log("inside print")
+//          num() 
+//     }, 2000);
+// }
+
+// function sample(){
+//     console.log("inside callback")
+// }
+
+// print(sample)
+
+// console.log("starting homework..");
+
+// setTimeout(()=>{
+//     console.log("homework done!")
+//     console.log("starting dinner")
+
+//     setTimeout(()=>{
+//         console.log("dinner done")
+//         console.log("getting ready to go out")
+
+//         setTimeout(()=>{
+//             console.log("going to the playground")
+//         },1000)
+//     },1500)
+// },2000)
+
+// const p = new Promise((res,rej)=>{
+//     let done = true;
+//     setTimeout(()=>{
+//       if (done){
+//         res({name:"Lucky", age:23})
+//       }else{
+//         rej("Word has not been completed")
+//       }
+//     },5000)
+// })
+// p.then((data)=>{
+//     console.log(data.name);
+//     console.log(data.age)+
+// }).catch((err)=>{
+//     console.log(err)
+// }).finally(()=>{
+//     console.log("finally done")
+// })
+
+// function doHomework(){
+//     const p=new Promise((res,rej)=>{
+//         setTimeout(()=>{
+//             if (done){
+//                 console.log("homework completed")
+//                 res("homework is done")
+//             }else{
+//                 rej("homework not completed")
+//             }
+//         },2000)
+//     })
+//     return p
+// }
+
+function orderFood(){
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+            console.log("Food ordered")
+            res()
+        },2000)
+    })
 }
 
-function sample(){
-    console.log("inside callback")
+function prepareFood(){
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+            console.log("Food pepared")
+            res()
+        },2000)
+    })
 }
 
-print(sample)
+function deliverFood(){
+    return new Promise((res,rej)=>{
+        setTimeout(()=>{
+            console.log("Food delivered")
+            res()
+        },2000)
+    })
+}
+
+async function foodOrder(){
+    await orderFood()
+    await prepareFood()
+    await deliverFood()
+}
+
+foodOrder()
